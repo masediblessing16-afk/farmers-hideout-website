@@ -1,0 +1,1 @@
+/* The owner can change this list to publish offers. Dates use YYYY-MM-DD. */\nwindow.FARMERS_HIDEOUT_OFFERS = [];\n
