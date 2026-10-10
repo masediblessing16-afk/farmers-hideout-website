@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Owner Offers Helper | The Farmer's Hideout</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:22px;background:#f8f4e9;color:#20271f;font:16px/1.5 Arial,sans-serif}.wrap{max-width:650px;margin:auto}.card{background:#fffdf7;border:1px solid #e8dfcc;border-radius:18px;padding:22px;box-shadow:0 8px 24px #0001}h1,h2{color:#183d2b}label{display:block;font-weight:700;margin:14px 0 5px}input,textarea{width:100%;padding:12px;border:1px solid #cfc4ad;border-radius:9px;font:inherit}button{margin-top:16px;background:#183d2b;color:white;border:0;border-radius:10px;padding:13px 16px;font-weight:700;font-size:1rem}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#eee7d8;padding:14px;border-radius:10px}.note{background:#fff1cd;padding:12px;border-radius:10px;font-size:.92rem}.back{color:#183d2b}
+</style></head><body><main class="wrap"><p><a class="back" href="index.html">← Back to website</a></p><div class="card">
+<h1>Owner Offers Helper</h1><p>Use this small form to prepare an offer for the website.</p>
+<div class="note"><strong>Important:</strong> This is a hidden helper, not a secure login. Because GitHub Pages is a static website, this form cannot publish offers directly to all visitors. To publish, update <code>offers.js</code> in GitHub. Do not enter private information here.</div>
+<label for="title">Offer name</label><input id="title" placeholder="e.g. Burger & Chips Special">
+<label for="price">Price</label><input id="price" placeholder="e.g. R65">
+<label for="description">Description</label><textarea id="description" rows="3" placeholder="What is included in the offer?"></textarea>
+<label for="start">Start date</label><input id="start" type="date">
+<label for="end">End date</label><input id="end" type="date">
+<button id="make">Generate offer code</button>
+<h2>Code to put in offers.js</h2><p>Copy this code and replace the empty array in <code>offers.js</code> with it. Commit the file on GitHub. Offers show only between their start and end dates.</p>
+<pre id="output">Your offer code will appear here.</pre><button id="copy">Copy code</button>
+</div></main>
+<script>
+const $=id=>document.getElementById(id);
+let generated='';
+$('make').onclick=()=>{
+ const title=$('title').value.trim(), price=$('price').value.trim(), description=$('description').value.trim(), start=$('start').value, end=$('end').value;
+ if(!title||!start||!end||end<start){alert('Enter an offer name and valid start/end dates.');return;}
+ const item={title,price,description,start,end};
+ generated='window.FARMERS_HIDEOUT_OFFERS = '+JSON.stringify([item],null,2)+';';
+ $('output').textContent=generated;
+};
+$('copy').onclick=async()=>{if(!generated){alert('Generate the offer code first.');return;}try{await navigator.clipboard.writeText(generated);alert('Copied. Paste it into offers.js in GitHub.');}catch(e){$('output').focus();alert('Select and copy the code shown above.');}};
+</script></body></html>
