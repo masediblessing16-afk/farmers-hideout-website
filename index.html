@@ -1,511 +1,119 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#183d2b">
-  <meta name="description" content="The Farmer's Hideout in Mogapeng Village, Tzaneen. Explore our menu and order on WhatsApp.">
-  <title>The Farmer's Hideout | Tzaneen</title>
+  <meta name="description" content="Discover The Farmer's Hideout in Mogapeng Village, Tzaneen. Explore our menu and order ahead for pickup on WhatsApp. Pickup only, no delivery.">
+  <title>The Farmer's Hideout | Good Food, Good Vibes</title>
   <style>
-    :root {
-      --green: #183d2b;
-      --light-green: #dce8cb;
-      --cream: #f8f5eb;
-      --brown: #77583c;
-      --white: #fffdf7;
-      --whatsapp: #25d366;
-      --text: #27372c;
-      --muted: #687367;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 75px; }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { text-decoration: none; }
-    .wrap { width: 92%; max-width: 1080px; margin: auto; }
-
-    header {
-      background: var(--white);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 1px solid #e4e0d5;
-    }
-
-    .nav {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .brand {
-      color: var(--green);
-      font-size: 19px;
-      font-weight: bold;
-    }
-
-    .brand small {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 2px;
-      color: var(--brown);
-    }
-
-    .navlinks { display: flex; gap: 17px; }
-    .navlinks a { color: var(--green); font-weight: bold; font-size: 14px; }
-    .navlinks a:hover { color: var(--brown); }
-
-    .menu-toggle {
-      display: none;
-      padding: 9px 12px;
-      border: 1px solid #cbd5c5;
-      background: white;
-      border-radius: 8px;
-    }
-
-    .hero {
-      background: var(--green);
-      color: white;
-      padding: 58px 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 38px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      color: var(--light-green);
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    h1, h2, h3 { line-height: 1.2; }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(42px, 6vw, 68px);
-      margin: 15px 0;
-    }
-
-    .hero p { color: #e1e9dc; font-size: 17px; }
-
-    .hero-img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      border-radius: 20px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 13px 19px;
-      margin: 5px 5px 5px 0;
-      border-radius: 30px;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .btn-wa { background: var(--whatsapp); color: #10391e; }
-    .btn-light { border: 1px solid #b5c6b3; color: white; }
-
-    section { padding: 60px 0; }
-
-    .section-title {
-      font-family: Georgia, serif;
-      color: var(--green);
-      font-size: clamp(30px, 4vw, 43px);
-      margin: 8px 0 15px;
-    }
-
-    .intro { max-width: 680px; color: var(--muted); }
-    .kicker { color: var(--brown); font-size: 12px; font-weight: bold; letter-spacing: 2px; }
-
-    .about-grid, .hours-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .about-img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 18px;
-    }
-
-    .menu-section { background: #eee9db; }
-    .menu-heading { text-align: center; margin-bottom: 30px; }
-    .menu-heading .intro { margin: auto; }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .menu-card {
-      background: var(--white);
-      border: 1px solid #e5dfd0;
-      border-radius: 16px;
-      padding: 22px;
-    }
-
-    .menu-card h3 {
-      color: var(--green);
-      font-family: Georgia, serif;
-      font-size: 23px;
-      margin: 0 0 5px;
-    }
-
-    .menu-card .sub { color: var(--muted); font-size: 13px; }
-    .flavours { background: #edf2e5; padding: 12px; border-radius: 9px; font-size: 14px; }
-
-    .item {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px dashed #ded8c9;
-    }
-
-    .item:last-child { border-bottom: 0; }
-    .item-name { font-size: 14px; }
-    .price { font-weight: bold; color: var(--green); white-space: nowrap; }
-
-    .center { text-align: center; margin-top: 25px; }
-
-    .hours-card {
-      background: var(--white);
-      padding: 22px;
-      border-radius: 16px;
-      border: 1px solid #e5dfd0;
-    }
-
-    .hours-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid #eee9df;
-    }
-
-    .hours-row:last-child { border: 0; }
-    .open-time { color: var(--green); font-weight: bold; }
-    .closed { color: #a34c3c; font-weight: bold; }
-
-    .location-section { background: #eee9db; }
-
-    .location-card {
-      background: var(--green);
-      color: white;
-      padding: 28px;
-      border-radius: 18px;
-    }
-
-    .location-card h3 { font-family: Georgia, serif; font-size: 28px; }
-    .location-card p { color: #e0e8dc; }
-
-    .cta { background: var(--light-green); text-align: center; }
-    .cta .section-title { max-width: 700px; margin: 10px auto; }
-    .cta p { max-width: 580px; margin: 15px auto; }
-
-    footer { background: #102d20; color: white; padding: 28px 0; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    footer p { color: #cbd7c8; font-size: 13px; }
-    footer a { color: white; }
-
-    .floating {
-      position: fixed;
-      right: 14px;
-      bottom: 14px;
-      z-index: 20;
-      background: var(--whatsapp);
-      color: #10391e;
-      border-radius: 30px;
-      padding: 13px 17px;
-      font-weight: bold;
-      box-shadow: 0 5px 20px #0003;
-    }
-
-    @media (max-width: 720px) {
-      .navlinks {
-        display: none;
-        position: absolute;
-        top: 69px;
-        left: 0;
-        right: 0;
-        padding: 15px 4%;
-        background: var(--white);
-        flex-direction: column;
-        gap: 0;
-        border-bottom: 1px solid #ddd;
-      }
-
-      .navlinks.show { display: flex; }
-      .navlinks a { padding: 12px 0; }
-      .menu-toggle { display: block; }
-      .hero-grid, .about-grid, .hours-grid { grid-template-columns: 1fr; }
-      .hero-grid { gap: 22px; }
-      .hero-img { height: 240px; }
-      .menu-grid { grid-template-columns: 1fr; }
-      section { padding: 45px 0; }
-      .about-img { height: 250px; }
-      .hero { padding: 38px 0; }
-      .menu-card { padding: 19px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-    }
+    :root{--green:#183d2b;--green2:#28563b;--cream:#f8f4e9;--paper:#fffdf7;--gold:#d9a441;--ink:#20271f;--muted:#6d746b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+    a{color:inherit}img{display:block;max-width:100%}.wrap{width:min(1120px,92%);margin:auto}
+    .notice{background:#f0dfb9;color:#3b2a10;text-align:center;padding:9px 14px;font-weight:700;font-size:.92rem}
+    header{background:var(--green);color:white;position:sticky;top:0;z-index:10;box-shadow:0 3px 12px #0002}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:800;letter-spacing:.2px}
+    .brand img{width:48px;height:48px;object-fit:cover;border-radius:50%;border:2px solid #e6c783}
+    .brand span{line-height:1.15}.brand small{display:block;font-size:.69rem;color:#e8d8b0;letter-spacing:1.8px;margin-top:5px}
+    nav{display:flex;align-items:center;gap:20px}nav a{text-decoration:none;font-size:.93rem;font-weight:700}nav a:hover{color:#f0cc7e}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:13px 19px;border-radius:999px;background:var(--gold);color:#211a0c;text-decoration:none;font-weight:800;border:0;cursor:pointer;transition:transform .18s,filter .18s}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.04)}.btn.green{background:var(--green);color:white}.btn.outline{background:transparent;border:1px solid #d8c9a8;color:var(--green)}
+    .hero{position:relative;min-height:570px;display:grid;align-items:center;background:linear-gradient(90deg,rgba(10,29,18,.88),rgba(10,29,18,.48) 58%,rgba(10,29,18,.15)),url('images/grill-platter.jpg') center/cover;color:white}
+    .hero-content{padding:76px 0;max-width:680px}.eyebrow{text-transform:uppercase;letter-spacing:2.4px;font-weight:800;color:#f1ca76;font-size:.78rem}
+    h1{font-size:clamp(2.7rem,7vw,5.3rem);line-height:1.02;margin:15px 0 20px;letter-spacing:-2px}h1 span{color:#f0c66e}
+    .hero p{font-size:1.15rem;max-width:570px;color:#f5f2e9}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+    .pickup-pill{display:inline-flex;gap:8px;align-items:center;border:1px solid #ffffff70;background:#ffffff13;padding:9px 13px;border-radius:99px;font-size:.9rem;margin-top:22px}
+    section{padding:76px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 34px}.section-head h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin:8px 0 12px;color:var(--green)}.section-head p{color:var(--muted);margin:0}
+    .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}.intro-photo{border-radius:22px;overflow:hidden;box-shadow:0 15px 35px #30200e1c}.intro-photo img{width:100%;height:420px;object-fit:cover}.intro-copy h2{font-size:2.3rem;line-height:1.15;color:var(--green);margin:8px 0 15px}.intro-copy p{color:var(--muted)}
+    .feature-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.feature{background:#e9e2d0;padding:9px 13px;border-radius:10px;font-size:.9rem;font-weight:700}
+    .menu-section{background:#efe8d8}.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.menu-card{background:var(--paper);border:1px solid #e8dfcc;border-radius:17px;padding:22px;box-shadow:0 5px 16px #34240b08}.menu-card h3{color:var(--green);margin:0 0 12px;font-size:1.25rem}.menu-card ul{list-style:none;padding:0;margin:0}.menu-card li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed #ddd2bc;font-size:.95rem}.menu-card li:last-child{border-bottom:0}.price{font-weight:800;white-space:nowrap;color:#875a12}.menu-note{font-size:.87rem;color:var(--muted);margin:12px 0 0}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-item{margin:0;position:relative;overflow:hidden;border-radius:16px;background:#ddd;min-height:230px}.gallery-item img{width:100%;height:100%;min-height:230px;max-height:340px;object-fit:cover;transition:transform .35s}.gallery-item:hover img{transform:scale(1.04)}.gallery-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:32px 16px 13px;background:linear-gradient(transparent,#000b);color:white;font-weight:800}
+    .pickup{background:var(--green);color:white}.pickup-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}.pickup h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin:8px 0 14px}.pickup p{color:#e1e9df}.pickup-card{background:#fffdf7;color:var(--ink);border-radius:20px;padding:26px}.pickup-card h3{color:var(--green);margin-top:0}.pickup-card p{color:var(--muted);margin:8px 0}.pickup-card .btn{width:100%;margin-top:12px}
+    .hours-location{display:grid;grid-template-columns:1fr 1fr;gap:20px}.info-card{background:var(--paper);padding:26px;border-radius:18px;border:1px solid #e8dfcc}.info-card h3{margin-top:0;color:var(--green)}.hours{display:grid;grid-template-columns:1fr auto;gap:7px 14px}.hours span:nth-child(even){font-weight:700}.closed{color:#a33}.map-link{display:inline-block;margin-top:10px;color:var(--green);font-weight:800}
+    footer{background:#102b1e;color:#e9eee8;padding:30px 0}.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}.footer-inner p{margin:4px 0;color:#bdc9bf;font-size:.9rem}
+    .float-wa{position:fixed;right:17px;bottom:17px;z-index:20;background:#16834a;color:white;text-decoration:none;font-weight:800;padding:14px 17px;border-radius:999px;box-shadow:0 7px 22px #0003}
+    @media(max-width:850px){nav{gap:12px}nav a{font-size:.85rem}.menu-grid{grid-template-columns:repeat(2,1fr)}.hero{min-height:520px}.intro-grid,.pickup-grid{gap:26px}}
+    @media(max-width:620px){.nav{padding:12px 0;align-items:flex-start;flex-direction:column}.brand img{width:42px;height:42px}nav{width:100%;overflow-x:auto;padding:4px 0 7px;gap:17px}nav a{white-space:nowrap}.nav>.btn{display:none}.hero{min-height:530px;background-position:58% center}.hero-content{padding:60px 0}.hero p{font-size:1rem}section{padding:56px 0}.intro-grid,.pickup-grid,.hours-location{grid-template-columns:1fr}.intro-photo img{height:300px}.menu-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:repeat(2,1fr);gap:9px}.gallery-item,.gallery-item img{min-height:180px}.gallery-item img{height:180px}.gallery-item figcaption{font-size:.85rem;padding:27px 10px 9px}.float-wa{right:12px;bottom:12px;padding:12px 14px;font-size:.9rem}}
   </style>
 </head>
 <body>
-
-<header>
-  <div class="wrap nav">
-    <a href="#home" class="brand">
-      The Farmer's Hideout
-      <small>GOOD FOOD · NATURAL VIBES</small>
-    </a>
-
-    <button class="menu-toggle" id="menuToggle"
-      aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
-
-    <nav class="navlinks" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#menu">Menu</a>
-      <a href="#hours">Hours</a>
-      <a href="#location">Location</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="hero" id="home">
-    <div class="wrap hero-grid">
-      <div>
-        <div class="eyebrow">Mogapeng Village · Tzaneen</div>
-        <h1>The Farmer's Hideout</h1>
-        <p>Your local hideout for good food, relaxed vibes and a little taste of nature. Come hungry, leave happy!</p>
-        <a class="btn btn-wa" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">☘ Order on WhatsApp</a>
-        <a class="btn btn-light" href="#menu">Explore Menu ↓</a>
-      </div>
-      <img class="hero-img"
-        src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1000&q=85"
-        alt="Food and a welcoming dining table">
+  <div class="notice">📍 PICKUP ONLY · We do not offer delivery. Order on WhatsApp and collect from us.</div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="The Farmer's Hideout home">
+        <img src="images/farmers-hideout-sign.jpg" alt="The Farmer's Hideout sign">
+        <span>THE FARMER'S HIDEOUT<small>GOOD FOOD · GOOD VIBES</small></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#pickup">Pickup</a><a href="#visit">Find Us</a>
+      </nav>
+      <a class="btn" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout%2C%20I%27d%20like%20to%20place%20a%20pickup%20order.">Order for Pickup ↗</a>
     </div>
-  </section>
+  </header>
 
-  <section id="about">
-    <div class="wrap about-grid">
-      <div>
-        <div class="kicker">WELCOME TO YOUR HIDEOUT</div>
-        <h2 class="section-title">Good food feels better in nature.</h2>
-        <p class="intro">Welcome to The Farmer's Hideout, a cozy local food stand in Mogapeng Village. Surrounded by nature, we're a relaxed place to catch up with friends, take a break and enjoy something delicious.</p>
-        <p class="intro">From saucy chicken wings and loaded kotas to burgers, platters and refreshing drinks, there's something for every craving.</p>
-        <p><strong>🌿 Relaxed atmosphere · 🍔 Tasty favourites · 📱 Easy WhatsApp ordering</strong></p>
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap"><div class="hero-content">
+        <div class="eyebrow">Your local food hideout · Mogapeng Village</div>
+        <h1>Big flavour.<br><span>Good times.</span></h1>
+        <p>From saucy wings and loaded kotas to refreshing drinks, make your next meal a good one at The Farmer's Hideout.</p>
+        <div class="hero-actions"><a class="btn" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout%2C%20I%27d%20like%20to%20place%20a%20pickup%20order.">Order for Pickup on WhatsApp</a><a class="btn outline" href="#menu" style="color:white;border-color:#ffffff9c">Explore the Menu</a></div>
+        <div class="pickup-pill">✓ WhatsApp orders · Customer collection only</div>
+      </div></div>
+    </section>
+
+    <section id="about"><div class="wrap intro-grid">
+      <div class="intro-photo"><img src="images/farmers-hideout-sign.jpg" alt="The Farmer's Hideout wooden sign surrounded by greenery" loading="lazy"></div>
+      <div class="intro-copy"><div class="eyebrow" style="color:#8a641d">Welcome to our hideout</div><h2>A local favourite for flavour and good vibes.</h2>
+        <p>Welcome to The Farmer's Hideout, a relaxed food spot in Mogapeng Village near Tzaneen. Drop by for a tasty bite, a refreshing drink, and a laid-back local atmosphere.</p>
+        <p>Browse the menu, send your order on WhatsApp, then collect it from us. <strong>Pickup only — delivery is not available.</strong></p>
+        <div class="feature-row"><span class="feature">🍔 Burgers & Kotas</span><span class="feature">🍗 Wings & Platters</span><span class="feature">🥤 Refreshing Drinks</span></div>
       </div>
-      <img class="about-img"
-        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85"
-        alt="Warm restaurant atmosphere" loading="lazy">
-    </div>
-  </section>
+    </div></section>
 
-  <section class="menu-section" id="menu">
-    <div class="wrap">
-      <div class="menu-heading">
-        <div class="kicker">FRESH CRAVINGS, LOCAL FAVOURITES</div>
-        <h2 class="section-title">Our Menu</h2>
-        <p class="intro">Explore the menu and message us to order. Prices are in South African rand (R).</p>
-      </div>
-
+    <section class="menu-section" id="menu"><div class="wrap">
+      <div class="section-head"><div class="eyebrow" style="color:#8a641d">Made for your cravings</div><h2>Explore Our Menu</h2><p>Choose your favourites and message us to place a pickup order. Prices are in South African rand (R).</p></div>
       <div class="menu-grid">
-
-        <article class="menu-card">
-          <h3>🍗 Chicken Wings</h3>
-          <p class="sub">Served with chips</p>
-          <div class="flavours"><strong>Sauces:</strong> Smokey BBQ / Creamy Peri / Hot Smokey BBQ / Mild Honey Lemon</div>
-          <div class="item"><span class="item-name">4 wings</span><span class="price">R40</span></div>
-          <div class="item"><span class="item-name">6 wings</span><span class="price">R60</span></div>
-          <div class="item"><span class="item-name">8 wings</span><span class="price">R80</span></div>
-          <div class="item"><span class="item-name">10 wings</span><span class="price">R100</span></div>
-        </article>
-
-        <article class="menu-card">
-          <h3>🥙 Light Meals</h3>
-          <div class="item"><span class="item-name">Chicken tenders</span><span class="price">R50</span></div>
-          <div class="item"><span class="item-name">Footlong Russian & chips</span><span class="price">R50</span></div>
-          <div class="item"><span class="item-name">Russian & chips</span><span class="price">R35</span></div>
-          <div class="item"><span class="item-name">Chicken & waffles</span><span class="price">R80</span></div>
-          <div class="item"><span class="item-name">Tortilla wrap</span><span class="price">R50</span></div>
-          <div class="item"><span class="item-name">Chicken/Beef quesadilla</span><span class="price">R60</span></div>
-          <div class="item"><span class="item-name">Fish and chips</span><span class="price">R45</span></div>
-        </article>
-
-        <article class="menu-card">
-          <h3>🔥 On the Grill & Combos</h3>
-          <div class="item"><span class="item-name">Quarter leg</span><span class="price">R50</span></div>
-          <div class="item"><span class="item-name">Half chicken</span><span class="price">R100</span></div>
-          <div class="item"><span class="item-name">Full chicken</span><span class="price">R200</span></div>
-          <div class="item"><span class="item-name">Meat lovers Platter</span><span class="price">R230</span></div>
-          <div class="item"><span class="item-name">Burger & wings</span><span class="price">R100</span></div>
-          <div class="item"><span class="item-name">Comfort platter</span><span class="price">R110</span></div>
-          <div class="item"><span class="item-name">Chic quesadilla & wings</span><span class="price">R80</span></div>
-          <div class="item"><span class="item-name">King Kota 2 & wings</span><span class="price">R80</span></div>
-        </article>
-
-        <article class="menu-card">
-          <h3>🥪 Kotas</h3>
-          <div class="item"><span class="item-name">Kasi Kota</span><span class="price">R35</span></div>
-          <div class="item"><span class="item-name">Kasi Kota 2</span><span class="price">R30</span></div>
-          <div class="item"><span class="item-name">Kasi Kota 3</span><span class="price">R30</span></div>
-          <div class="item"><span class="item-name">King Kota</span><span class="price">R35</span></div>
-          <div class="item"><span class="item-name">King Kota 2</span><span class="price">R40</span></div>
-          <div class="item"><span class="item-name">Queen Kota</span><span class="price">R55</span></div>
-          <div class="item"><span class="item-name">Big deal Kota</span><span class="price">R60</span></div>
-          <div class="item"><span class="item-name">Rib Kota</span><span class="price">R40</span></div>
-        </article>
-
-        <article class="menu-card">
-          <h3>🍔 Burgers</h3>
-          <div class="item"><span class="item-name">Classic beef burger</span><span class="price">R60</span></div>
-          <div class="item"><span class="item-name">Farmers beef burger</span><span class="price">R80</span></div>
-          <div class="item"><span class="item-name">Snyora double beef burger</span><span class="price">R110</span></div>
-          <div class="item"><span class="item-name">Double smashburger</span><span class="price">R90</span></div>
-          <div class="item"><span class="item-name">Classic rib burger</span><span class="price">R75</span></div>
-          <div class="item"><span class="item-name">Farmers rib burger</span><span class="price">R85</span></div>
-          <div class="item"><span class="item-name">Classic chicken burger</span><span class="price">R60</span></div>
-          <div class="item"><span class="item-name">Farmers chicken burger</span><span class="price">R85</span></div>
-          <div class="item"><span class="item-name">Double chicken burger</span><span class="price">R110</span></div>
-        </article>
-
-        <article class="menu-card">
-          <h3>🥤 Drinks</h3>
-          <div class="item"><span class="item-name">Mocktails: Berry Explosion, Rainbow Splash, Sunrise Paradise & more</span><span class="price">R30–R45</span></div>
-          <div class="item"><span class="item-name">Salted caramel iced coffee</span><span class="price">R35</span></div>
-          <div class="item"><span class="item-name">Mango iced tea</span><span class="price">R28</span></div>
-          <div class="item"><span class="item-name">Other brewed drinks</span><span class="price">Ask us</span></div>
-          <div class="item"><span class="item-name">Coca-Cola 500ml</span><span class="price">R30</span></div>
-          <div class="item"><span class="item-name">Juice</span><span class="price">R25</span></div>
-          <div class="item"><span class="item-name">Biscoff milkshake</span><span class="price">R45</span></div>
-          <div class="item"><span class="item-name">Double chocolate milkshake</span><span class="price">R40</span></div>
-          <div class="item"><span class="item-name">Vanilla milkshake</span><span class="price">R30</span></div>
-          <div class="item"><span class="item-name">Other milkshake flavours</span><span class="price">Ask us</span></div>
-        </article>
-
+        <article class="menu-card"><h3>🍗 Chicken Wings</h3><p class="menu-note">Served with chips. Choose Smokey BBQ, Creamy Peri, Hot Smokey BBQ or Mild Honey Lemon.</p><ul><li><span>4 wings</span><span class="price">R40</span></li><li><span>6 wings</span><span class="price">R60</span></li><li><span>8 wings</span><span class="price">R80</span></li><li><span>10 wings</span><span class="price">R100</span></li></ul></article>
+        <article class="menu-card"><h3>🍟 Light Meals</h3><ul><li><span>Chicken tenders</span><span class="price">R50</span></li><li><span>Footlong Russian & chips</span><span class="price">R50</span></li><li><span>Russian & chips</span><span class="price">R35</span></li><li><span>Chicken & waffles</span><span class="price">R80</span></li><li><span>Tortilla wrap</span><span class="price">R50</span></li><li><span>Chicken / beef quesadilla</span><span class="price">R60</span></li><li><span>Fish and chips</span><span class="price">R45</span></li></ul></article>
+        <article class="menu-card"><h3>🔥 Grill & Combos</h3><ul><li><span>Quarter leg</span><span class="price">R50</span></li><li><span>Half chicken</span><span class="price">R100</span></li><li><span>Full chicken</span><span class="price">R200</span></li><li><span>Meat lovers platter</span><span class="price">R230</span></li><li><span>Burger & wings</span><span class="price">R100</span></li><li><span>Comfort platter</span><span class="price">R110</span></li><li><span>Chic quesadilla & wings</span><span class="price">R80</span></li><li><span>King Kota 2 & wings</span><span class="price">R80</span></li></ul></article>
+        <article class="menu-card"><h3>🥪 Kotas</h3><ul><li><span>Kasi Kota</span><span class="price">R35</span></li><li><span>Kasi Kota 2</span><span class="price">R30</span></li><li><span>Kasi Kota 3</span><span class="price">R30</span></li><li><span>King Kota</span><span class="price">R35</span></li><li><span>King Kota 2</span><span class="price">R40</span></li><li><span>Queen Kota</span><span class="price">R55</span></li><li><span>Big Deal Kota</span><span class="price">R60</span></li><li><span>Rib Kota</span><span class="price">R40</span></li></ul></article>
+        <article class="menu-card"><h3>🍔 Burgers</h3><ul><li><span>Classic beef burger</span><span class="price">R60</span></li><li><span>Farmers beef burger</span><span class="price">R80</span></li><li><span>Snyora double beef burger</span><span class="price">R110</span></li><li><span>Double smashburger</span><span class="price">R90</span></li><li><span>Classic rib burger</span><span class="price">R75</span></li><li><span>Farmers rib burger</span><span class="price">R85</span></li><li><span>Classic chicken burger</span><span class="price">R60</span></li><li><span>Farmers chicken burger</span><span class="price">R85</span></li><li><span>Double chicken burger</span><span class="price">R110</span></li></ul></article>
+        <article class="menu-card"><h3>🥤 Drinks & Treats</h3><ul><li><span>Mocktails</span><span class="price">R30–R45</span></li><li><span>Salted caramel iced coffee</span><span class="price">R35</span></li><li><span>Mango iced tea</span><span class="price">R28</span></li><li><span>Other brewed drinks</span><span class="price">Ask us</span></li><li><span>Coca-Cola 500 ml</span><span class="price">R30</span></li><li><span>Juice</span><span class="price">R25</span></li><li><span>Biscoff milkshake</span><span class="price">R45</span></li><li><span>Double chocolate milkshake</span><span class="price">R40</span></li><li><span>Vanilla milkshake</span><span class="price">R30</span></li><li><span>Other milkshake flavours</span><span class="price">Ask us</span></li></ul></article>
       </div>
-      <div class="center">
-        <a class="btn btn-wa" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout!%20I%27d%20like%20to%20order." target="_blank" rel="noopener">Order from our menu on WhatsApp ↗</a>
+      <p style="text-align:center;color:var(--muted);margin:24px 0 0">Menu items and availability may change. Please confirm your order and collection time on WhatsApp.</p>
+      <div style="text-align:center;margin-top:22px"><a class="btn green" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout%2C%20I%27d%20like%20to%20place%20a%20pickup%20order.">Order for Pickup on WhatsApp</a></div>
+    </div></section>
+
+    <section id="gallery"><div class="wrap">
+      <div class="section-head"><div class="eyebrow" style="color:#8a641d">A taste of the hideout</div><h2>Photo Gallery</h2><p>Photos shared for The Farmer's Hideout — see the drinks, food and brand.</p></div>
+      <div class="gallery-grid">
+        <figure class="gallery-item"><img src="images/mocktails.jpg" alt="Colourful mocktails in glasses with umbrellas" loading="lazy"><figcaption>Colourful Mocktails</figcaption></figure>
+        <figure class="gallery-item"><img src="images/iced-drinks.jpg" alt="Iced drinks served outdoors" loading="lazy"><figcaption>Iced Drinks</figcaption></figure>
+        <figure class="gallery-item"><img src="images/grill-platter.jpg" alt="Grilled and crumbed food with chips on a platter" loading="lazy"><figcaption>Grill & Platter Favourites</figcaption></figure>
+        <figure class="gallery-item"><img src="images/loaded-kota.jpg" alt="Loaded kota sandwich filled with chips and toppings" loading="lazy"><figcaption>Loaded Kota</figcaption></figure>
+        <figure class="gallery-item"><img src="images/burgers-and-wings.jpg" alt="Burgers and saucy chicken wings" loading="lazy"><figcaption>Burgers & Wings</figcaption></figure>
+        <figure class="gallery-item"><img src="images/farmers-hideout-sign.jpg" alt="The Farmer's Hideout wooden sign" loading="lazy"><figcaption>Our Hideout</figcaption></figure>
       </div>
-    </div>
-  </section>
+    </div></section>
 
-  <section id="hours">
-    <div class="wrap hours-grid">
-      <div>
-        <div class="kicker">PLAN YOUR VISIT</div>
-        <h2 class="section-title">Opening Hours</h2>
-        <p class="intro">We're ready to welcome you during our opening hours. Thursday and Sunday are our days off.</p>
-        <a class="btn btn-wa" href="https://wa.me/27628545492?text=Hi!%20Are%20you%20open%20today%3F" target="_blank" rel="noopener">Ask us on WhatsApp</a>
+    <section class="pickup" id="pickup"><div class="wrap pickup-grid">
+      <div><div class="eyebrow">Simple, easy, local</div><h2>Order ahead.<br>Pick up. Enjoy.</h2><p>Message us on WhatsApp with the items you want. We’ll confirm your order and collection details. Please collect your order from The Farmer's Hideout.</p><p><strong>Important: We currently offer pickup only. No delivery service is available.</strong></p><a class="btn" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout%2C%20I%27d%20like%20to%20place%20a%20pickup%20order.">Start a WhatsApp Order ↗</a></div>
+      <div class="pickup-card"><h3>📲 How pickup works</h3><p><strong>1.</strong> Tap the WhatsApp order button.</p><p><strong>2.</strong> Send your food and drink choices.</p><p><strong>3.</strong> Wait for confirmation and collection details.</p><p><strong>4.</strong> Collect your order from us.</p><a class="btn green" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout%2C%20please%20confirm%20pickup%20availability.">Ask About Pickup</a></div>
+    </div></section>
+
+    <section id="visit"><div class="wrap">
+      <div class="section-head"><div class="eyebrow" style="color:#8a641d">Come through</div><h2>Find The Hideout</h2><p>Visit us in Mogapeng Village, Tzaneen, Limpopo.</p></div>
+      <div class="hours-location">
+        <div class="info-card"><h3>🕒 Opening Hours</h3><div class="hours"><span>Monday</span><span>10:00–19:00</span><span>Tuesday</span><span>10:00–19:00</span><span>Wednesday</span><span>10:00–19:00</span><span>Thursday</span><span class="closed">Closed</span><span>Friday</span><span>10:00–19:00</span><span>Saturday</span><span>10:00–19:00</span><span>Sunday</span><span class="closed">Closed</span></div><p class="menu-note">Hours can change on special occasions. Message us to confirm before travelling.</p></div>
+        <div class="info-card"><h3>📍 Our Location</h3><p><strong>The Farmer's Hideout</strong><br>Mogapeng Village, Tzaneen<br>Limpopo, South Africa</p><p>Near Mogapeng Clinic and Mika's Lake Park.</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=The+Farmer%27s+Hideout+Mogapeng+Village+Tzaneen" target="_blank" rel="noopener">Open Google Maps search ↗</a><p style="margin-top:20px"><strong>WhatsApp:</strong> <a href="https://wa.me/27628545492">+27 62 854 5492</a></p><p>Pickup only — no delivery.</p></div>
       </div>
-      <div class="hours-card">
-        <div class="hours-row"><span>Monday</span><span class="open-time">10:00 – 19:00</span></div>
-        <div class="hours-row"><span>Tuesday</span><span class="open-time">10:00 – 19:00</span></div>
-        <div class="hours-row"><span>Wednesday</span><span class="open-time">10:00 – 19:00</span></div>
-        <div class="hours-row"><span>Thursday</span><span class="closed">Closed</span></div>
-        <div class="hours-row"><span>Friday</span><span class="open-time">10:00 – 19:00</span></div>
-        <div class="hours-row"><span>Saturday</span><span class="open-time">10:00 – 19:00</span></div>
-        <div class="hours-row"><span>Sunday</span><span class="closed">Closed</span></div>
-      </div>
-    </div>
-  </section>
+    </div></section>
+  </main>
 
-  <section class="location-section" id="location">
-    <div class="wrap hours-grid">
-      <div>
-        <div class="kicker">FIND YOUR HIDEOUT</div>
-        <h2 class="section-title">Come find us in Mogapeng.</h2>
-        <p class="intro">The Farmer's Hideout is in Mogapeng Village, Tzaneen, Limpopo, South Africa, between Mogapeng Clinic and Mika's Lake Park.</p>
-        <p class="intro">Use these landmarks to guide your visit. Message us if you need help with directions.</p>
-        <a class="btn btn-wa" href="https://wa.me/27628545492?text=Hi!%20Please%20help%20me%20with%20directions." target="_blank" rel="noopener">Ask for directions ↗</a>
-      </div>
-      <div class="location-card">
-        <h3>We'll see you soon!</h3>
-        <p><strong>Village:</strong> Mogapeng</p>
-        <p><strong>Town:</strong> Tzaneen</p>
-        <p><strong>Province:</strong> Limpopo, South Africa</p>
-        <p><strong>Nearby landmarks:</strong> Mogapeng Clinic and Mika's Lake Park</p>
-        <a class="btn btn-light" href="https://www.google.com/maps/search/?api=1&query=Mogapeng+Clinic+Mika%27s+Lake+Park+Tzaneen" target="_blank" rel="noopener">Search on Google Maps ↗</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta" id="contact">
-    <div class="wrap">
-      <div class="kicker">GOOD FOOD IS JUST A MESSAGE AWAY</div>
-      <h2 class="section-title">What are you craving today?</h2>
-      <p>Tell us what you'd like to order. Contact The Farmer's Hideout directly on WhatsApp.</p>
-      <a class="btn btn-wa" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">☘ Order on WhatsApp</a>
-      <p><strong>+27 62 854 5492</strong></p>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap footer-inner">
-    <div>
-      <a class="brand" href="#home" style="color:white">The Farmer's Hideout</a>
-      <p>Mogapeng Village, Tzaneen, Limpopo, South Africa.</p>
-    </div>
-    <div>
-      <a href="#menu">Menu</a> ·
-      <a href="#hours">Hours</a> ·
-      <a href="#location">Location</a> ·
-      <a href="https://wa.me/27628545492">WhatsApp</a>
-      <p>© <span id="year"></span> The Farmer's Hideout</p>
-    </div>
-  </div>
-</footer>
-
-<a class="floating" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout!%20I%27d%20like%20to%20order." target="_blank" rel="noopener">☘ WhatsApp Order</a>
-
-<script>
-  const toggle = document.getElementById("menuToggle");
-  const nav = document.getElementById("navLinks");
-
-  toggle.addEventListener("click", function () {
-    const opened = nav.classList.toggle("show");
-    toggle.setAttribute("aria-expanded", String(opened));
-  });
-
-  nav.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", function () {
-      nav.classList.remove("show");
-      toggle.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <footer><div class="wrap footer-inner"><div><strong>THE FARMER'S HIDEOUT</strong><p>Good food · Good vibes · Mogapeng Village</p></div><p>Pickup only · No delivery · © <span id="year"></span> The Farmer's Hideout</p></div></footer>
+  <a class="float-wa" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout%2C%20I%27d%20like%20to%20place%20a%20pickup%20order." aria-label="Order for pickup on WhatsApp">WhatsApp Pickup</a>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
-  </html>
-  
+</html>
