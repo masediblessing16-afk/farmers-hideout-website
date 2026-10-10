@@ -28,7 +28,14 @@
     .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center}.intro-photo{border-radius:22px;overflow:hidden;box-shadow:0 15px 35px #30200e1c}.intro-photo img{width:100%;height:420px;object-fit:cover}.intro-copy h2{font-size:2.3rem;line-height:1.15;color:var(--green);margin:8px 0 15px}.intro-copy p{color:var(--muted)}
     .feature-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.feature{background:#e9e2d0;padding:9px 13px;border-radius:10px;font-size:.9rem;font-weight:700}
     .menu-section{background:#efe8d8}.menu-board-wrap{max-width:900px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 12px 32px #34240b22}.menu-board-image{display:block;width:100%;height:auto}.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.menu-card{background:var(--paper);border:1px solid #e8dfcc;border-radius:17px;padding:22px;box-shadow:0 5px 16px #34240b08}.menu-card h3{color:var(--green);margin:0 0 12px;font-size:1.25rem}.menu-card ul{list-style:none;padding:0;margin:0}.menu-card li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed #ddd2bc;font-size:.95rem}.menu-card li:last-child{border-bottom:0}.price{font-weight:800;white-space:nowrap;color:#875a12}.menu-note{font-size:.87rem;color:var(--muted);margin:12px 0 0}
-    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-item{margin:0;position:relative;overflow:hidden;border-radius:16px;background:#ddd;min-height:230px}.gallery-item img{width:100%;height:100%;min-height:230px;max-height:340px;object-fit:cover;transition:transform .35s}.gallery-item:hover img{transform:scale(1.04)}.gallery-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:32px 16px 13px;background:linear-gradient(transparent,#000b);color:white;font-weight:800}
+
+    .offers-section{background:#f8f4e9}
+    .offer-empty{max-width:720px;margin:auto;text-align:center;background:#fffdf7;border:2px dashed #d9c9a9;border-radius:18px;padding:30px 22px;color:#6d746b}
+    .offer-empty strong{display:block;color:#183d2b;font-size:1.25rem;margin-bottom:6px}
+    .offer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .offer-card{background:#fffdf7;border:1px solid #e8dfcc;border-radius:18px;padding:22px;box-shadow:0 8px 22px #34240b10}
+    .offer-card h3{color:#183d2b;margin:0 0 8px}.offer-price{font-size:1.6rem;font-weight:900;color:#875a12}
+\n    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-item{margin:0;position:relative;overflow:hidden;border-radius:16px;background:#ddd;min-height:230px}.gallery-item img{width:100%;height:100%;min-height:230px;max-height:340px;object-fit:cover;transition:transform .35s}.gallery-item:hover img{transform:scale(1.04)}.gallery-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:32px 16px 13px;background:linear-gradient(transparent,#000b);color:white;font-weight:800}
     .pickup{background:var(--green);color:white}.pickup-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}.pickup h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin:8px 0 14px}.pickup p{color:#e1e9df}.pickup-card{background:#fffdf7;color:var(--ink);border-radius:20px;padding:26px}.pickup-card h3{color:var(--green);margin-top:0}.pickup-card p{color:var(--muted);margin:8px 0}.pickup-card .btn{width:100%;margin-top:12px}
     .hours-location{display:grid;grid-template-columns:1fr 1fr;gap:20px}.info-card{background:var(--paper);padding:26px;border-radius:18px;border:1px solid #e8dfcc}.info-card h3{margin-top:0;color:var(--green)}.hours{display:grid;grid-template-columns:1fr auto;gap:7px 14px}.hours span:nth-child(even){font-weight:700}.closed{color:#a33}.map-link{display:inline-block;margin-top:10px;color:var(--green);font-weight:800}
     footer{background:#102b1e;color:#e9eee8;padding:30px 0}.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}.footer-inner p{margin:4px 0;color:#bdc9bf;font-size:.9rem}
@@ -46,7 +53,7 @@
         <span>THE FARMER'S HIDEOUT<small>GOOD FOOD · GOOD VIBES</small></span>
       </a>
       <nav aria-label="Main navigation">
-        <a href="#about">About</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#pickup">Pickup</a><a href="#visit">Find Us</a>
+        <a href="#about">About</a><a href="#menu">Menu</a><a href="#offers">Special Offers</a><a href="#gallery">Gallery</a><a href="#pickup">Pickup</a><a href="#visit">Find Us</a>
       </nav>
       <a class="btn" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout%2C%20I%27d%20like%20to%20place%20a%20pickup%20order.">Order for Pickup ↗</a>
     </div>
@@ -70,6 +77,12 @@
         <p>Browse the menu, send your order on WhatsApp, then collect it from us. <strong>Pickup only — delivery is not available.</strong></p>
         <div class="feature-row"><span class="feature">🍔 Burgers & Kotas</span><span class="feature">🍗 Wings & Platters</span><span class="feature">🥤 Refreshing Drinks</span></div>
       </div>
+    </div></section>
+
+
+    <section class="offers-section" id="offers"><div class="wrap">
+      <div class="section-head"><div class="eyebrow" style="color:#8a641d">Something special</div><h2>Deals &amp; Limited Offers</h2><p>Check here for our latest specials.</p></div>
+      <div id="offers-content" class="offer-empty"><strong>No special offers available right now.</strong>Check back soon for the next deal from The Farmer's Hideout.</div>
     </div></section>
 
     <section class="menu-section" id="menu"><div class="wrap">
@@ -107,6 +120,33 @@
 
   <footer><div class="wrap footer-inner"><div><strong>THE FARMER'S HIDEOUT</strong><p>Good food · Good vibes · Mogapeng Village</p></div><p>Pickup only · No delivery · © <span id="year"></span> The Farmer's Hideout</p></div></footer>
   <a class="float-wa" href="https://wa.me/27628545492?text=Hi%20The%20Farmer%27s%20Hideout%2C%20I%27d%20like%20to%20place%20a%20pickup%20order." aria-label="Order for pickup on WhatsApp">WhatsApp Pickup</a>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Offers are published from offers.js; this file is safe to edit through GitHub.
+    const offersData = document.createElement('script');
+    offersData.src = 'offers.js';
+    offersData.onload = function () {
+      const offers = window.FARMERS_HIDEOUT_OFFERS || [];
+      const today = new Date(); today.setHours(0,0,0,0);
+      const active = offers.filter(o => o.title && o.start && o.end &&
+        new Date(o.start+'T00:00:00') <= today &&
+        new Date(o.end+'T23:59:59') >= new Date());
+      const area = document.getElementById('offers-content');
+      if (active.length) {
+        area.className = 'offer-grid';
+        area.innerHTML = active.map(o => '<article class="offer-card"><h3>'+escapeOffer(o.title)+'</h3><p>'+escapeOffer(o.description || '')+'</p><div class="offer-price">'+escapeOffer(o.price || '')+'</div><p><small>Offer ends '+escapeOffer(o.end)+'</small></p><a class="btn green" href="https://wa.me/27628545492?text='+encodeURIComponent('Hi The Farmer\'s Hideout, I would like to ask about: '+o.title)+'">Ask on WhatsApp</a></article>').join('');
+      }
+    };
+    document.body.appendChild(offersData);
+    function escapeOffer(v){return String(v).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+    // Tap the brand logo/name five times quickly to open the owner helper page.
+    let brandTaps=0, brandTimer;
+    document.querySelector('.brand').addEventListener('click', function(e){
+      brandTaps++;
+      clearTimeout(brandTimer);
+      brandTimer=setTimeout(()=>brandTaps=0,1800);
+      if(brandTaps>=5){e.preventDefault();window.location.href='owner-offers.html';}
+    });
+  </script>
 </body>
 </html>
